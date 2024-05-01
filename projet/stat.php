@@ -1,0 +1,1 @@
+page pour afficher les stats des games précédentes via token Riot 

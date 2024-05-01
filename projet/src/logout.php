@@ -1,0 +1,1 @@
+configuration de la déconnexion
