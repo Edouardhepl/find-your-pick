@@ -1,1 +1,12 @@
-pour se connecter à la bd
+<?php
+
+try {
+    $client = new PDO(
+        sprintf('mysql:host=%s;dbname=%s;port=%s;charset=utf8', MYSQL_HOST, MYSQL_NAME, MYSQL_PORT),
+        MYSQL_USER,
+        MYSQL_PASSWORD
+    );
+    $client->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (Exception $exception) {
+    die('Erreur : ' . $exception->getMessage());
+}
