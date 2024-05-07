@@ -1,12 +1,6 @@
 <?php
-
-try {
-    $client = new PDO(
-        sprintf('mysql:host=%s;dbname=%s;port=%s;charset=utf8', MYSQL_HOST, MYSQL_NAME, MYSQL_PORT),
-        MYSQL_USER,
-        MYSQL_PASSWORD
-    );
-    $client->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (Exception $exception) {
-    die('Erreur : ' . $exception->getMessage());
+$conn = new mysqli($host, $user, $password, $database, $port);
+if ($conn->connect_error) {
+    die("Erreur de connexion : " . $conn->connect_error);
 }
+// Vous êtes maintenant connecté à la base de données !

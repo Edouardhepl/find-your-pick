@@ -1,7 +1,6 @@
 <?php
-
-const MYSQL_HOST = 'localhost';
-const MYSQL_PORT = 3306;
-const MYSQL_NAME = 'rnopounykp30';
-const MYSQL_USER = 'fo79yd84ifno';
-const MYSQL_PASSWORD = 'd4nc2p|2pd';
+$host = 'localhost';
+$user = 'fo79yd84ifno';
+$password = 'd4nc2p|2pd';
+$database = 'rnopounykp30';
+$port = 3306; // Le port par défaut pour MySQL
