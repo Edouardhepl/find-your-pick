@@ -1,0 +1,11 @@
+SELECT DISTINCT playstyle FROM champions ORDER BY playstyle ASC;
+
+SELECT DISTINCT name FROM  champion ORDER BY name ASC
+
+SELECT DISTINCT type FROM champions WHERE type IN ('cac', 'distance') ORDER BY type ASC;
+
+SELECT DISTINCT lane FROM champions ORDER BY lane ASC;
+
+SELECT name FROM champions WHERE lane = 'Top' AND name NOT IN ('garen', 'darius', 'fiora');
+
+SELECT * FROM preferences WHERE lane = 'mid' AND playstyle = 'Aggressif';
