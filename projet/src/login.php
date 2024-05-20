@@ -55,29 +55,30 @@
     </div>
 </body>
 </html>
-<?php
+<?php    
+    require_once(__DIR__ . '/config/mysql.php');
+    require_once(__DIR__ . '/config/connect.php');
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+
     if (!empty($email) && !empty($password)) {
-        // Connexion à la base de données
-        $conn = new mysqli('localhost', 'username', 'password', 'database');
+        try {
+            $sql = 'SELECT * FROM users WHERE email = :email';
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(['email' => $email]);
+            $user = $stmt->fetch();
 
-        if ($conn->connect_error) {
-            die("Erreur de connexion: " . $conn->connect_error);
+            if ($user && password_verify($password, $user['password'])) {
+                header('Location: index.php');
+                exit;
+            } else {
+                echo "Email ou mot de passe incorrect";
+            }
+        } catch (PDOException $e) {
+            die("Erreur de connexion : " . $e->getMessage());
         }
-
-        $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            header('Location: index.php');
-        } else {
-            echo "Email ou mot de passe incorrect";
-        }
-
-        $conn->close();
     } else {
         echo "Veuillez remplir tous les champs";
     }

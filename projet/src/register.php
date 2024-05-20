@@ -65,21 +65,23 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
 
     if (!empty($username) && !empty($email) && !empty($password)) {
-        // Connexion à la base de données
-        $conn = new mysqli('localhost', 'fo79yd84ifno', 'd4nc2p|2pd', 'rnopounykp30');
+         require_once(__DIR__ . '/config/mysql.php');
+             require_once(__DIR__ . '/config/connect.php'); 
+        // Hachage du mot de passe
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        if ($conn->connect_error) {
-            die("Erreur de connexion: " . $conn->connect_error);
-        }
+        // Requête d'insertion sécurisée avec requêtes préparées
+        $sql = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':username' => $username,
+            ':email' => $email,
+            ':password' => $hashed_password,
+        ]);
 
-        $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
-        if ($conn->query($sql) === TRUE) {
-            header('Location: login.php');
-        } else {
-            echo "Erreur: " . $sql . "<br>" . $conn->error;
-        }
-
-        $conn->close();
+        // Redirection après succès de l'inscription
+        header('Location: login.php');
+        exit();
     } else {
         echo "Veuillez remplir tous les champs";
     }

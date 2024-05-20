@@ -9,3 +9,23 @@ SELECT DISTINCT lane FROM champions ORDER BY lane ASC;
 SELECT name FROM champions WHERE lane = 'Top' AND name NOT IN ('garen', 'darius', 'fiora');
 
 SELECT * FROM preferences WHERE lane = 'mid' AND playstyle = 'Aggressif';
+
+se connecer en pdo 
+centraliser le fichiers ou on recoit les données 
+
+X mettre la connexion en pdo 
+- page d'inscription/connexion en premier avant l'index (script du prof)
+X vérifier que les données s'enregistrent dans la db 
+- vérifier que les requêtes sql fonctionnes dans les menus déroulants 
+
+
+    <div class="login-page">
+        <div class="form">
+            <?php
+            require_once(__DIR__ . '/src/register.php');
+            require_once(__DIR__ . '/src/login.php');
+            ?>
+        </div>
+    </div>
+        <?php if (isset($_SESSION['loggedUser'])) : ?>
+<?php endif; ?>
