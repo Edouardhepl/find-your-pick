@@ -64,3 +64,8 @@ footer {
     color: #666;
     font-size: 14px;
 }
+
+option {
+    background-color: #fff;
+    color: black;
+}
