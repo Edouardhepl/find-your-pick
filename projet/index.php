@@ -45,7 +45,6 @@ $stmt->execute([
     ':lane' => $lane,
 ]);
 ?>
-
 <!DOCTYPE html>
 <html>
 
