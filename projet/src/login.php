@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once(__DIR__ . '/../config/mysql.php');
-require_once(__DIR__ . '/../config/connect.php');
+require_once(__DIR__ . '/config/mysql.php');
+require_once(__DIR__ . '/config/connect.php');
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
@@ -16,9 +16,8 @@ if (isset($_POST['submit'])) {
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['loggedUser'] = true;
             $_SESSION['email'] = $user['email'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['id_user'] = $user['id'];
-            header('Location: ../index.php');
+        }        
+            header('Location: index.php');
             exit();
         } else {
             $error = 'Mauvais login/password';
@@ -26,17 +25,9 @@ if (isset($_POST['submit'])) {
     } else {
         $error = 'Veuillez remplir tous les champs';
     }
-}
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Connexion</title>
-    <link href="css/style.css" rel="stylesheet" />
-</head>
 <body>
+    <h1>Connexion</h1>
     <div class="login-form">
         <form method="post" action="login.php">
             Email: <input type="email" name="email" placeholder="Email" required><br>
@@ -49,5 +40,5 @@ if (isset($_POST['submit'])) {
         }
         ?>
     </div>
+    <a href="index.php">Si le boutton connexion ne marche pas</a>
 </body>
-</html>

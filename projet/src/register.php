@@ -5,8 +5,10 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
 
     if (!empty($username) && !empty($email) && !empty($password)) {
-        require_once(__DIR__ . '/../config/mysql.php');
-        require_once(__DIR__ . '/../config/connect.php');
+        require_once(__DIR__ . '/config/mysql.php');
+        require_once(__DIR__ . '/config/connect.php');
+        
+        
         // Hachage du mot de passe
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -20,14 +22,14 @@ if (isset($_POST['submit'])) {
         ]);
 
         // Redirection après succès de l'inscription
-        header('Location: ../login.php');
+        header('Location: index.php');
         exit();
     } else {
         echo "Veuillez remplir tous les champs";
     }
 }
 ?>
-
+<h1>Inscription</h1>
 <div class="register-form">
     <form method="post" action="register.php">
         Pseudo: <input type="text" name="username" placeholder="Pseudo"><br>

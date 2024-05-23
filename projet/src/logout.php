@@ -1,2 +1,9 @@
-configuration de la déconnexion
-voir truc du prof 
+<?php
+session_start();
+
+session_unset();
+session_destroy();
+
+header("Location: ../index.php");
+exit();
+?>f 

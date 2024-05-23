@@ -124,3 +124,51 @@ css page login
         .header a:hover {
             color: #ddd;
         }
+
+        css contact
+
+        .body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .contact-form {
+            width: 300px;
+            padding: 30px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px #aaa;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+
+        .contact-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #0099cc;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .contact-form input[type="submit"]:hover {
+            background-color: #006699;
+        }
