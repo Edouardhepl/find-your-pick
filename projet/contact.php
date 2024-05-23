@@ -3,7 +3,7 @@
 <head>
     <title>Page de Contact</title>
     <style>
-        body {
+        .body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
@@ -50,7 +50,7 @@
         }
     </style>
 </head>
-<body>
+<body class="contact-body">
     <?php require_once(__DIR__ . '/src/partials/header.php'); ?>
     <div class="contact-form">
         <form method="post" action="contact.php">

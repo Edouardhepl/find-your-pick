@@ -1,31 +1,126 @@
-SELECT DISTINCT playstyle FROM champions ORDER BY playstyle ASC;
+/* CSS page contact */
+.contact-body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-SELECT DISTINCT name FROM  champion ORDER BY name ASC
+.contact-form {
+    width: 300px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #aaa;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+ 
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+}
 
-SELECT DISTINCT type FROM champions WHERE type IN ('cac', 'distance') ORDER BY type ASC;
+.contact-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #0099cc;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
 
-SELECT DISTINCT lane FROM champions ORDER BY lane ASC;
+.contact-form input[type="submit"]:hover {
+    background-color: #006699;
+}
 
-SELECT name FROM champions WHERE lane = 'Top' AND name NOT IN ('garen', 'darius', 'fiora');
+css page login
 
-SELECT * FROM preferences WHERE lane = 'mid' AND playstyle = 'Aggressif';
+ body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-se connecer en pdo 
-centraliser le fichiers ou on recoit les données 
+        .login-form {
+            width: 300px;
+            padding: 30px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px #aaa;
+        }
 
-X mettre la connexion en pdo 
-- page d'inscription/connexion en premier avant l'index (script du prof)
-X vérifier que les données s'enregistrent dans la db 
-- vérifier que les requêtes sql fonctionnes dans les menus déroulants 
+        .login-form input[type="email"],
+        .login-form input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
 
+        .login-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #0099cc;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
 
-    <div class="login-page">
-        <div class="form">
-            <?php
-            require_once(__DIR__ . '/src/register.php');
-            require_once(__DIR__ . '/src/login.php');
-            ?>
-        </div>
-    </div>
-        <?php if (isset($_SESSION['loggedUser'])) : ?>
-<?php endif; ?>
+        .login-form input[type="submit"]:hover {
+            background-color: #006699;
+        }
+
+        css footer
+
+                .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .footer p {
+            margin: 0;
+            padding: 0;
+        }
+
+        css header
+
+        .header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .header a:hover {
+            color: #ddd;
+        }

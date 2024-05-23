@@ -3,6 +3,13 @@ session_start();
 require_once(__DIR__ . '/src/config/mysql.php');
 require_once(__DIR__ . '/src/config/connect.php');
 
+// Rediriger vers src/register.php si l'utilisateur n'est pas connecté
+if (!isset($_SESSION['loggedUser'])) {
+    header('Location: src/register.php');
+    exit();
+}
+
+// Charger les données des champions, styles de jeu, types et lanes
 $sql = "SELECT id_champion, name FROM champions ORDER BY name ASC";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
@@ -23,87 +30,77 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $lanes = $stmt->fetchAll();
 ?>
+
 <!DOCTYPE html>
 <html>
-
 <head>
-
-    <head>
-        <meta charset="utf-8" />
-        <title>Mon site</title>
-        <link href="css/style.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="scripts/script.js"></script>
-    </head>
+    <meta charset="utf-8" />
+    <title>Mon site</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="scripts/script.js"></script>
 </head>
-
 <body>
-    <header><?php require_once(__DIR__ . '/src/partials/header.php'); ?></header>
+    <?php require_once(__DIR__ . '/src/partials/header.php'); ?>
 
-    <div class="login-page">
-        <div class="form">
-            <?php
-
-            ?>
+    <div id="corps">
+        <div class="login-page">
+            <div class="form">
+                <?php require_once(__DIR__ . '/src/register.php'); ?>
+                <?php require_once(__DIR__ . '/src/login.php'); ?>
+            </div>
         </div>
+        <?php if (isset($_SESSION['loggedUser'])) : ?>
+        <form method="POST" class="form-container" action="">
+            <!-- Formulaire complet avec les champs Champion, Style de jeu, Type du champion et Lane -->
+            <div class="form-group">
+                <label for="champion">Champion</label>
+                <select name="champion" id="champion" class="form-control">
+                    <?php foreach ($champions as $champion) : ?>
+                        <option value="<?php echo htmlspecialchars($champion['id_champion']); ?>">
+                            <?php echo htmlspecialchars($champion['name']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="playstyle">Style de jeu</label>
+                <select name="playstyle" id="playstyle" class="form-control">
+                    <?php foreach ($playstyles as $playstyle) : ?>
+                        <option value="<?php echo htmlspecialchars($playstyle['playstyle']); ?>">
+                            <?php echo htmlspecialchars($playstyle['playstyle']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="type">Type du champion</label>
+                <select name="type" id="type" class="form-control">
+                    <?php foreach ($types as $type) : ?>
+                        <option value="<?php echo htmlspecialchars($type['type']); ?>">
+                            <?php echo htmlspecialchars($type['type']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="lane">Lane</label>
+                <select name="lane" id="lane" class="form-control">
+                    <?php foreach ($lanes as $lane) : ?>
+                        <option value="<?php echo htmlspecialchars($lane['lane']); ?>">
+                            <?php echo htmlspecialchars($lane['lane']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-submit">Soumettre</button>
+        </form>
+        <?php endif; ?>
     </div>
-
-
-
-    <form method="POST" class="form-container" action="">
-        <?php
-        // Formulaire complet avec les champs Champion, Style de jeu, Type du champion et Lane
-
-        // Champ Champion
-        echo '<form>';
-        echo '<div class="form-group">';
-        echo '<label for="champion">Champion</label>';
-        echo '<select name="champion" id="champion" class="form-control">';
-        foreach ($champions as $champion) {
-            echo '<option value="' . htmlspecialchars($champion['id_champion']) . '">' . htmlspecialchars($champion['name']) . '</option>';
-        }
-        echo '</select>';
-        echo '</div>';
-
-        // Champ Style de jeu
-        echo '<div class="form-group">';
-        echo '<label for="playstyle">Style de jeu</label>';
-        echo '<select name="playstyle" id="playstyle" class="form-control">';
-        foreach ($playstyles as $playstyle) {
-            echo '<option value="' . htmlspecialchars($playstyle['id_playstyle']) . '">' . htmlspecialchars($playstyle['name']) . '</option>';
-        }
-        echo '</select>';
-        echo '</div>';
-
-        // Champ Type du champion
-        echo '<div class="form-group">';
-        echo '<label for="type">Type du champion</label>';
-        echo '<select name="type" id="type" class="form-control">';
-        foreach ($types as $type) {
-            echo '<option value="' . htmlspecialchars($type['id_type']) . '">' . htmlspecialchars($type['name']) . '</option>';
-        }
-        echo '</select>';
-        echo '</div>';
-
-        // Champ Lane
-        echo '<div class="form-group">';
-        echo '<label for="lane">Lane</label>';
-        echo '<select name="lane" id="lane" class="form-control">';
-        foreach ($lanes as $lane) {
-            echo '<option value="' . htmlspecialchars($lane['id_lane']) . '">' . htmlspecialchars($lane['name']) . '</option>';
-        }
-        echo '</select>';
-        echo '</div>';
-
-        echo '</form>';
-        ?>
-
-        <button type="submit" class="btn-submit">Soumettre</button>
-    </form>
-
-    <footer>
-        <?php require_once(__DIR__ . '/src/partials/footer.php'); ?>
-    </footer>
+    <?php require_once(__DIR__ . '/src/partials/footer.php'); ?>
 </body>
-
 </html>

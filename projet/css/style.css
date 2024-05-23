@@ -1,71 +1,176 @@
-/* Reset des styles par défaut */
+/* CSS Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Style du corps de la page */
+/* Body styling */
 body {
-    background-color: #f2f2f2; /* Couleur de fond légèrement plus foncée */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-/* Style du formulaire */
-.form-container {
-    width: 80%;
-    margin: auto;
+/* Header styling */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Main content styling */
+#corps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
 }
 
-/* Style des groupes de formulaire */
-.form-group {
-    margin-bottom: 20px;
+/* Login and register forms styling */
+.login-page .form,
+.register-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
 }
 
-/* Style des étiquettes */
-label {
+/* Register form specific styling */
+.register-form {
+    width: 300px;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #aaa;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.register-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #0099cc;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.register-form input[type="submit"]:hover {
+    background-color: #006699;
+}
+
+.register-form a {
     display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    text-align: center;
+    margin-top: 10px;
+    color: #0099cc;
+    text-decoration: none;
 }
 
-/* Style des sélecteurs */
+.register-form a:hover {
+    text-decoration: underline;
+}
+
+/* Form container styling */
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
 .form-control {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 4px;
+    font-size: 1em;
 }
 
-/* Style du bouton Soumettre */
 .btn-submit {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
     transition: background-color 0.3s ease;
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+    font-size: 1em;
 }
 
 .btn-submit:hover {
-    background-color: #0056b3;
+    background-color: #45a049;
 }
 
-/* Style du pied de page */
+/* Footer styling */
 footer {
-    margin-top: 20px;
+    background-color: #333;
+    color: white;
     text-align: center;
-    color: #666;
-    font-size: 14px;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
 }
 
-option {
-    background-color: #fff;
-    color: black;
+/* Responsive design */
+@media (max-width: 600px) {
+    #corps {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    footer {
+        font-size: 0.9em;
+    }
+
+    .form-container {
+        padding: 10px;
+    }
 }
